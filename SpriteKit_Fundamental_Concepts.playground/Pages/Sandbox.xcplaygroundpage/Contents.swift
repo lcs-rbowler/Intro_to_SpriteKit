@@ -25,14 +25,25 @@ let nyanCat = SKSpriteNode(imageNamed: "Nyancat")
 nyanCat.position = midPoint
 nyanCat.setScale(8.0)
 
+let cookieMonster = SKSpriteNode(imageNamed: "Cookie Monster")
+cookieMonster.position = CGPoint(x: frame.size.width / 3 - 20, y: frame.size.height / 2)
+scene.addChild(cookieMonster)
+cookieMonster.zPosition = 11
+cookieMonster.setScale(2.5)
 //: To show how happy Nyan Cat is, let's run an action that repeats a sequence of Nyan Cat going up and down forever.
+//Move up and down actions
 let actionMoveUp = SKAction.moveBy(x: 0, y: 10, duration: 0.15)
 let actionMoveDown = SKAction.moveBy(x: 0, y: -10, duration: 0.15)
 let actionSequence = SKAction.sequence([actionMoveUp, actionMoveDown])
 let actionRepeat = SKAction.repeatForever(actionSequence)
 nyanCat.run(actionRepeat)
+cookieMonster.run(actionRepeat)
 nyanCat.zPosition = 10  // Ensure sprite is above background
 scene.addChild(nyanCat) // Add to the scene
+
+//Move right actions
+let actionMoveRight = SKAction.moveBy(x: 200, y: 0, duration: 5.0)
+nyanCat.run(actionMoveRight)
 
 //: Now show the scene within an SKView instance in the live view area
 let view = SKView(frame: frame)
